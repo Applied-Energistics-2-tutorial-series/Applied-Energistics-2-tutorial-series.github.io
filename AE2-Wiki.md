@@ -444,10 +444,7 @@ ME接口-箱子（单点），输入总线一次最多取出96个物品（4加�
 
 这套流程的问题在于，ME输入输出总线在红石激活下的行为难以理解（奇怪的代码），对这部分的深刻解释需要看代码的具体实现。当然，很少出问题。右下角的小土包底下是粘性活塞，用来发出1tick信号。
 
-{% embed url="https://www.bilibili.com/video/BV1ab4y1R7t2/" %}
-{% endembed %}
-
-[![](https://bb-embed.herokuapp.com/embed?v=BV1jS4y1w7SW)](https://player.bilibili.com/player.html?aid=683633468&bvid=BV1jS4y1w7SW&cid=711074429&page=1)
+[极简植物魔法符文祭坛自动化](https://www.bilibili.com/video/BV1ab4y1R7t2/)
 
 <p align="center">图4.1.2 卡合成 实现2</p>
 
@@ -462,7 +459,7 @@ ME接口-箱子（单点），输入总线一次最多取出96个物品（4加�
 
 <p align="center">图4.1.3续 30分钟优化后的实现</p>
 
-用[图2.14](broken-reference)的设计思路，打包机打包。开始合成时，ME-IO中的储存元件在靠右的ME-IO中，这个ME-IO上接的输入总线有红石卡。右边的ME接口发送物品到箱子，先有红石信号让ME-IO中的储存元件空转一圈，转完一圈后得到箱子里的一份物品，再接红石信号，此时开始正式合成。每次合成完都会给输入总线一个信号让其继续发包，如此持续到循环结束。
+采用打包机打包的设计思路。开始合成时，ME-IO中的储存元件在靠右的ME-IO中，这个ME-IO上接的输入总线有红石卡。右边的ME接口发送物品到箱子，先有红石信号让ME-IO中的储存元件空转一圈，转完一圈后得到箱子里的一份物品，再接红石信号，此时开始正式合成。每次合成完都会给输入总线一个信号让其继续发包，如此持续到循环结束。
 
 <figure><img src="pic/image (4).png" alt=""><figcaption><p></p></figcaption></figure>
 
