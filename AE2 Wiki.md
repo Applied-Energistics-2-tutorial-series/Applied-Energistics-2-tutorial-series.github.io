@@ -1,6 +1,6 @@
 _请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。_
 
- 前言
+ **前言**
 
 <figure><img src=".gitbook/assets/图片1.png" alt=""><figcaption><p>AE god</p></figcaption></figure>
 
