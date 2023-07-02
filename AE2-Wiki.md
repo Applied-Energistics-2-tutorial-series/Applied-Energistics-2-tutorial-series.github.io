@@ -189,7 +189,7 @@ _**任务的通常的完成手段是：以包为任务载体，将包传送到�
 
 
 
-就是简单的发布合成…可以用「[**伪合成**](AE2-Wiki.md#32-%E4%BC%AA%E5%90%88%E6%88%90%E9%AB%98%E7%BA%A7%E5%8F%91%E5%8C%85)」取消占用合成储存器
+就是简单的发布合成…可以用**「[伪合成](AE2-Wiki.md#32-%E4%BC%AA%E5%90%88%E6%88%90%E9%AB%98%E7%BA%A7%E5%8F%91%E5%8C%85)」**取消占用合成储存器
 
 <figure><img src="pic/image (23).png" alt=""><figcaption><p></p></figcaption></figure>
 <p align="center">图2.3.2 多用小能手</p>
