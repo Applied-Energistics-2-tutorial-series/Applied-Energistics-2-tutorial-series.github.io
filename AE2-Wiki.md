@@ -96,11 +96,11 @@ _
 
 ### 2.1.2「管道」的实现
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>图2.1 AE最简单的管道（传输4）</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3) (1).png" alt=""><figcaption><p>图2.1 AE最简单的管道（传输4）</p></figcaption></figure>
 
 特点：无需me控制器，无需调配置（也可以折腾存储总线），需供电，体积小功能少
 
-<figure><img src="../.gitbook/assets/image (14) (1).png" alt=""><figcaption><p>图2.2 快传（传输1）</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (14) (1).png" alt=""><figcaption><p>图2.2 快传（传输1）</p></figcaption></figure>
 
 特点：速度快，可以与元件工作台配合，传输指定物品到另一网络
 
