@@ -5,7 +5,7 @@ The tutorial attempts to automate the many mods possible in minecraft by using t
 <figure><img src="pic/图片1.png" alt=""width="1000px"></figure>
 <p align="center">AE god</p>
 
-教程的学习顺序应该是：
+## 教程的学习顺序推荐是：
 #### 1、根据[MCMOD](https://www.mcmod.cn/class/260.html)和[AE 基础](AE2%20Basic%20Wiki.md)学习AE基础知识。
 #### 2、学完基础后尝试学习[AE Wiki](AE2-Wiki.md#ae2-wiki-%E7%9B%AE%E5%BD%95)，遇到问题 提[issue](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/issues/new)
 ### 3、看完后，对教程有补充的想法，欢迎在[讨论](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/discussions/new?category=show-and-tell)里上传补充，或者留下username 或 电子邮箱，欢迎加入AE设计教程的编写。
