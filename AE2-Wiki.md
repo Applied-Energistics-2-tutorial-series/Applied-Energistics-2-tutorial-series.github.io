@@ -1,11 +1,11 @@
->**请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。**
+ # **前言**
 
- **前言**
+>**请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。**
 
 <figure><img src="pic/图片1.png" alt=""></figure>
 <p align="center">AE god</p>
 
- AE2 Wiki Summary
+#  AE2 Wiki Summary
 
 * [前言](./)
 * [1 绪论](1-绪论.md)
