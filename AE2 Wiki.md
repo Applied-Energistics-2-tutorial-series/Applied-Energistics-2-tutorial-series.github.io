@@ -1,4 +1,4 @@
-请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。
+_请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。_
 
 # 前言
 
