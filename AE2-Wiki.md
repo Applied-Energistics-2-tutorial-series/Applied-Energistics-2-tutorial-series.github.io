@@ -2,7 +2,7 @@
 
 >**请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。**
 
-<figure><img src="pic/图片1.png" alt=""></figure>
+<figure><img src="pic/图片1.png" alt=""width="2000px"></figure>
 <p align="center">AE god</p>
 
 #  AE2 Wiki 目录
@@ -147,20 +147,20 @@ _**任务的通常的完成手段是：以包为任务载体，将包传送到�
 
 ### 2.2.2「子网」的实现
 
-<figure><img src="pic/image (4) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (4) (1).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.2.1  ME接口真泛用</p>
 
 
 不用解释吧。
 
-<figure><img src="pic/image (2) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (2) (1).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.2.2  P2P也很好用的赛</p>
 
 
 
 绿色子网输出物品到箱子，粉红主网抽取箱子的物品。这种借助用P2P实现的子网也很常见，能有效的节省空间。
 
-<figure><img src="pic/image (1) (1) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (1) (1) (1).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.2.3  不得了的秘密</p>
 
 
@@ -183,7 +183,7 @@ _**任务的通常的完成手段是：以包为任务载体，将包传送到�
 
 ### 2.3.2「发包」的实现 <a href="#_toc137910912" id="_toc137910912"></a>
 
-<figure><img src="pic/image (13) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (13) (1).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.3.1 自动化の开端</p>
 
 
@@ -191,7 +191,7 @@ _**任务的通常的完成手段是：以包为任务载体，将包传送到�
 
 就是简单的发布合成…可以用「[伪合成](AE2-Wiki.md#32-%E4%BC%AA%E5%90%88%E6%88%90%E9%AB%98%E7%BA%A7%E5%8F%91%E5%8C%85)」取消占用合成储存器
 
-<figure><img src="pic/image (23).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (23).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.3.2 多用小能手</p>
 
 
@@ -203,7 +203,7 @@ _**任务的通常的完成手段是：以包为任务载体，将包传送到�
 
 这个结构和图2.3.1的不同的是不用发布合成就能发包，极限理论传输很快（40960物品/s），而且可以通过设置IO端口内存储元件设置传输的数量。
 
-<figure><img src="pic/image.png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image.png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.3.3 传输变发包</p>
 
 ME接口发送到箱子，输入总线一次最多取出96个物品（包）（4加速卡）。当上面箱子需要「包」，通过发信器从下方箱子取「包」。
@@ -230,7 +230,7 @@ ME接口发送到箱子，输入总线一次最多取出96个物品（包）（4
 
 ### 2.4.2「指示物」的实现 <a href="#_toc137910916" id="_toc137910916"></a>
 
-<figure><img src="pic/image (22).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (22).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图2.4.1 频道杀手</p>
 左边箱子有「包」，「包」中有效物品，和「指示物」
 
@@ -302,7 +302,7 @@ ME接口模式应是”当容器内有物品时不传送物品“，ME接口发�
 
 另一种思路（by DoremySwee），「标记物」放在另一个子网，让「标记物」在合成时进入上文中的左箱子，后文同。这种设计在设计样板时不用设置标记物，而且能单独抽象出一个「标记物」处理结构，但是相对而言体积会稍大一点。
 
-<figure><img src="pic/image (20).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (20).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图3.1.3 时不时可能出问题</p>
 
 
@@ -334,9 +334,9 @@ ME接口模式应是”当容器内有物品时不传送物品“，ME接口发�
 
 其中第一个样板  放置的ME接口的模式应是”当容器内有物品时不传送物品“，其他样板放在正常ME接口中。这样能保证一次只发送一次物品，用「卡合成」来实现「伪合成」。
 
-<figure><img src="pic/image (6) (2).png" alt=""></figure>
+<figure><img src="pic/image (6) (2).png" alt=""width="1000px"></figure>
 
-<figure><img src="pic/image (19) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (19) (1).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图3.2.1 经典结构</p>
 
 1、在图3.1-1鼠标指向的储存总线中   标记全部「伪合成」样板中的「产物」，优先级调高。就能实现所有进入主网络（绿）的「产物」优先进该子网。（「产物」应该选择永远不会在AE2中参与合成的物品）
@@ -380,7 +380,7 @@ flowchart LR;
 
 ### 3.3.2设计实现
 
-<figure><img src="pic/image (13).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (13).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 <p align="center">图3.3.1 利用ME-IO的发包</p>
 
 
@@ -450,7 +450,7 @@ ME接口-箱子（单点），输入总线一次最多取出96个物品（4加�
 
 视频有含有「标记物」的实现，比卡合成实现1理论上更稳定，体积更小。
 
-<figure><img src="pic/image (18).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (18).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
 
 <p align="center">图4.1.3 直接发包 实现1</p>
 
