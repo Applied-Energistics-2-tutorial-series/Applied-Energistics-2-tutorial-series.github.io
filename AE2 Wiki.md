@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="auto-number-title.css" />
 _请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。_
 
 # <link rel="stylesheet" type="text/css" href="auto-number-title.css" /> 前言
