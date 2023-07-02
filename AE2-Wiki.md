@@ -5,7 +5,7 @@
 <figure><img src="pic/图片1.png" alt=""></figure>
 <p align="center">AE god</p>
 
-#  AE2 Wiki Summary
+#  AE2 Wiki 目录
 
 * [前言](AE2-Wiki.md#%E5%89%8D%E8%A8%80)
 * [1 绪论](AE2-Wiki.md#ae2-wiki-summary)
