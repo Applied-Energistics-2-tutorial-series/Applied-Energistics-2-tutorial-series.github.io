@@ -401,7 +401,10 @@ _
 
 ### 3.3.2设计实现
 
-<figure><img src="pic/image (13).png" alt=""><figcaption><p>利用ME-IO的发包</p></figcaption></figure>
+<figure><img src="pic/image (13).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图3.3.1 利用ME-IO的发包</p>
+
+
 
 左上角的箱子是多「点」，右下角的箱子是单「点」。
 
@@ -413,7 +416,10 @@ _
 
 除了ME-IO发包，也有基于输入总线的发包，但是纯ae实现效果不很好
 
-<figure><img src="pic/image (9).png" alt=""><figcaption><p>熟悉不</p></figcaption></figure>
+<figure><img src="pic/image (9).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图3.3.2 熟悉不</p>
+
+
 
 ME接口-箱子（单点），输入总线一次最多取出96个物品（4加速卡）。当上面箱子（多点）需要「包」，通过发信器就能直接从下方箱子取「包」。图示只能实现单对两，下面箱子如果换成[抽屉控制器](https://www.mcmod.cn/item/33985.html)等类似功能的方块，就能实现单对多。
 
@@ -449,9 +455,13 @@ _
 
 ### 4.1.2设计实现 <a href="#_toc137910926" id="_toc137910926"></a>
 
-<figure><img src="pic/image (3).png" alt=""><figcaption><p>卡合成 实现1</p></figcaption></figure>
+<figure><img src="pic/image (3).png" alt=""><figcaption><p></p></figcaption></figure>
+<figure><img src="pic/image (8) (2).png" alt=""><figcaption><p></p></figcaption></figure>
 
-<figure><img src="pic/image (8) (2).png" alt=""><figcaption><p>卡合成 实现1 续</p></figcaption></figure>
+
+<p align="center">图4.1.1 卡合成 实现1</p>
+
+
 
 采用的是[图2.12](broken-reference)的设计思路，产物沿着ME接口-箱子-ME管道（粉）-花格箱的顺序传输发配。后面箱子中有「标记物」，当下面箱子内容物超过2个时，将「标记物」传输进下面箱子，当合成完成时，将下面箱子的「标记物」传输到后面箱子。依此完成循环。
 
@@ -460,18 +470,25 @@ _
 这套流程的问题在于，ME输入输出总线在红石激活下的行为难以理解（奇怪的代码），对这部分的深刻解释需要看代码的具体实现。当然，很少出问题。右下角的小土包底下是粘性活塞，用来发出1tick信号。
 
 {% embed url="https://www.bilibili.com/video/BV1ab4y1R7t2/" %}
-卡合成 实现2
 {% endembed %}
+<p align="center">图4.1.2 卡合成 实现2</p>
 
 视频有含有「标记物」的实现，比卡合成实现1理论上更稳定，体积更小。
 
-<figure><img src="pic/image (18).png" alt=""><figcaption><p>直接发包 实现1</p></figcaption></figure>
+<figure><img src="pic/image (18).png" alt=""><figcaption><p></p></figcaption></figure>
 
-<figure><img src="pic/image (16).png" alt=""><figcaption><p>30分钟优化后的实现</p></figcaption></figure>
+<p align="center">图4.1.3 直接发包 实现1</p>
+
+<figure><img src="pic/image (16).png" alt=""><figcaption><p></p></figcaption></figure>
+
+
+<p align="center">图4.1.3续 30分钟优化后的实现</p>
 
 用[图2.14](broken-reference)的设计思路，打包机打包。开始合成时，ME-IO中的储存元件在靠右的ME-IO中，这个ME-IO上接的输入总线有红石卡。右边的ME接口发送物品到箱子，先有红石信号让ME-IO中的储存元件空转一圈，转完一圈后得到箱子里的一份物品，再接红石信号，此时开始正式合成。每次合成完都会给输入总线一个信号让其继续发包，如此持续到循环结束。
 
-<figure><img src="pic/image (4).png" alt=""><figcaption><p>目前最简单的标记物实现</p></figcaption></figure>
+<figure><img src="pic/image (4).png" alt=""><figcaption><p></p></figcaption></figure>
+
+<p align="center">图4.1.4 直接发包 实现2</p>
 
 ME接口阻挡模式，发原料送进箱子。1、合成开始时，红石比较器激活鼠标所指输入总线，将材料发送至祭坛；2、合成结束时，读取祭坛信号，激活一次输入总线，重新开始合成。循环流程2即可自动化。
 
@@ -504,7 +521,9 @@ _
 
 主网的A地址输出总线（主网任取一空的空间储存元件）-->A地址空间IO端口(简称A端)-->子网的A地址输入总线-->子网à子网的B地址输出总线（已经存储数据的空间储存元件）-->B端-->主网的B地址输入总线（还原成空的空间储存元件）。
 
-<figure><img src="pic/image (10).png" alt=""><figcaption><p>复杂的实现</p></figcaption></figure>
+<figure><img src="pic/image (10).png" alt=""><figcaption><p></p></figcaption></figure>
+
+<p align="center">图4.2.1 红石结构</p>
 
 图中粉红色线缆是主网，红色和绿色线缆是子网。
 
@@ -514,13 +533,15 @@ _
 
 第一代设计流程图：
 
-<figure><img src="pic/image (2) (2).png" alt=""><figcaption><p>复杂</p></figcaption></figure>
+<figure><img src="pic/image (2) (2).png" alt=""><figcaption><p></p></figcaption></figure>
 
-实现
+实现：
 
 <figure><img src="pic/image (6).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="pic/image (7).png" alt=""><figcaption><p>复杂</p></figcaption></figure>
+<figure><img src="pic/image (7).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图4.2.2 复杂的实现</p>
+
 
 ##### 第二代设计思路 <a href="#_toc137910937" id="_toc137910937"></a>
 
@@ -538,7 +559,7 @@ _
 
 #### 第三种实现
 
-其实，在设计的时候，忽略了一个重要的东西。每一个传送机在设计时都只设计了一个空间IO端口，但是实际上传送机可以有不只一个空间IO端口。如果用两个分别处理输入输出，红石控制能减少很多。同时，可以不使用伪合成，配合ME存储总线进行选址，能减少一个伪合成子网，每台传送机只会占用主网频道2个。思路来源（DoremySwee等）
+其实，在设计的时候，忽略了一个重要的东西。每一个传送机在设计时都只设计了一个空间IO端口，但是实际上传送机可以有不只一个空间IO端口。如果用两个分别处理输入输出，红石控制能减少很多。同时，可以不使用伪合成，配合ME存储总线进行选址，能减少一个伪合成子网，每台传送机只会占用主网频道2个。_思路来源（DoremySwee等）_
 
 这个比前两个都简单，所以建议自己设计一下，这里不放流程图，可以自己尝试画画。
 
