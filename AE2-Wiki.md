@@ -108,13 +108,13 @@ _
 
 特点：输出总线要调成想输出的「物品」，可以加红石卡模糊卡等进行控制，需供电（注意左下角的输入总线在这个结构是没用的，因为输入总线不能读取箱子里的信息）
 
-<figure><img src="../.gitbook/assets/image (4) (2) (1).png" alt=""><figcaption><p>图2.3 根据网络数据条件控制的管道（传输2）</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4) (2) (1).png" alt=""><figcaption><p>图2.3 根据网络数据条件控制的管道（传输2）</p></figcaption></figure>
 
 需要me控制器，输出总线和前面一样可以调配置，存储总线可以直接将输入网络的「数据」变成「物品」，体积大功能多。
 
-<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>图2.4 根据子网络数据条件控制的管道（传输4）</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6) (1).png" alt=""><figcaption><p>图2.4 根据子网络数据条件控制的管道（传输4）</p></figcaption></figure>
 
-在需要子网反馈控制的设计中可以使用类似这种结构，这个思路在[2.5卡合成](../2-xiang-guan-de-gai-nian-yu-shi-xian/2.5-ka-he-cheng.md)和[3.3单样板对多子网遍历发包](../3-%E5%AE%9E%E4%BE%8B/3.3-%E5%8D%95%E6%A0%B7%E6%9D%BF%E5%AF%B9%E5%A4%9A%E5%AD%90%E7%BD%91%E9%81%8D%E5%8E%86%E5%8F%91%E5%8C%85.md)中有用到。
+在需要子网反馈控制的设计中可以使用类似这种结构，这个思路在[2.5卡合成](2-xiang-guan-de-gai-nian-yu-shi-xian/2.5-ka-he-cheng.md)和[3.3单样板对多子网遍历发包](3-%E5%AE%9E%E4%BE%8B/3.3-%E5%8D%95%E6%A0%B7%E6%9D%BF%E5%AF%B9%E5%A4%9A%E5%AD%90%E7%BD%91%E9%81%8D%E5%8E%86%E5%8F%91%E5%8C%85.md)中有用到。
 
 >-
   「子网」是一切复杂的AE操作的前提。因为不可能主网络去实现所有操作，"机器IO、增加频道、打包合成"等等操作用主网实现过于繁琐，有些也很难实现。合理运用子网可以减少很多工程量。要理解子网的本质功能就是一段程序
@@ -133,19 +133,19 @@ _
 
 ### 2.2.2「子网」的实现
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>图2.5 ME接口真泛用</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4) (1).png" alt=""><figcaption><p>图2.5 ME接口真泛用</p></figcaption></figure>
 
 不用解释吧。看不懂就看视频，视频有讲
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>图2.6 P2P也很好用的赛</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption><p>图2.6 P2P也很好用的赛</p></figcaption></figure>
 
 绿色子网输出物品到箱子，粉红主网抽取箱子的物品。这种借助用P2P实现的子网也很常见，能有效的节省空间。
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>图2.7 不得了的秘密</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>图2.7 不得了的秘密</p></figcaption></figure>
 
 这个结构可以用来完成伪合成，本质是一个子网。
 
-「主网」用储存总线和ME-IO端口与子网进行交互，在实例[3.1](../3-shi-li/3.1-wei-he-cheng-gao-ji-fa-bao.md) 伪合成（高级发包）中会重点介绍。这张图截取的是实例[3.4](../3-shi-li/3.4-chuan-song-ji.md) 空间塔，传送机的一部分。
+「主网」用储存总线和ME-IO端口与子网进行交互，在实例[3.1](3-shi-li/3.1-wei-he-cheng-gao-ji-fa-bao.md) 伪合成（高级发包）中会重点介绍。这张图截取的是实例[3.4](3-shi-li/3.4-chuan-song-ji.md) 空间塔，传送机的一部分。
 
 _
 包通常在复杂项目中，起中间作用，甚至核心作用。
@@ -161,29 +161,29 @@ _
 
 ### 2.3.2「发包」的实现 <a href="#_toc137910912" id="_toc137910912"></a>
 
-<figure><img src="../.gitbook/assets/image (13) (1).png" alt=""><figcaption><p>图2.8 自动化の开端</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13) (1).png" alt=""><figcaption><p>图2.8 自动化の开端</p></figcaption></figure>
 
-就是简单的发布合成…可以用[**「伪合成」**](../3-%E5%AE%9E%E4%BE%8B/3.1-%E4%BC%AA%E5%90%88%E6%88%90%EF%BC%88%E9%AB%98%E7%BA%A7%E5%8F%91%E5%8C%85%EF%BC%89.md)取消占用合成储存器
+就是简单的发布合成…可以用[**「伪合成」**](3-%E5%AE%9E%E4%BE%8B/3.1-%E4%BC%AA%E5%90%88%E6%88%90%EF%BC%88%E9%AB%98%E7%BA%A7%E5%8F%91%E5%8C%85%EF%BC%89.md)取消占用合成储存器
 
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption><p>图2.9 多用小能手（</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (23).png" alt=""><figcaption><p>图2.9 多用小能手（</p></figcaption></figure>
 
 激活拉杆，左边箱子物品通过ME-IO端口中转，进入右边箱子。
 
 这个结构和图2.8的不同的是不用发布合成就能发包，极限理论传输很快（40960物品/s），而且可以通过设置IO端口内存储元件设置传输的数量。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>传输变发包（</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>传输变发包（</p></figcaption></figure>
 
 ME接口发送到箱子，输入总线一次最多取出96个物品（包）（4加速卡）。当上面箱子需要「包」，通过发信器从下方箱子取「包」。
 
 ### 2.3.3「发包」的作用和说明 <a href="#_toc137910913" id="_toc137910913"></a>
 
-「发包」和[**「传输」**](../2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)的区别，主要在于：1、任务对时序、速度的要求。2、体积代价和效率代价的平衡
+「发包」和[**「传输」**](2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)的区别，主要在于：1、任务对时序、速度的要求。2、体积代价和效率代价的平衡
 
-「发包」**在复杂合成中担任重要的作用，因为输入输出总线只能完成**[**「传输」**](../2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)**的操作，是串行的，不能用在对**「包」整体性要求高的合成中。
+「发包」**在复杂合成中担任重要的作用，因为输入输出总线只能完成**[**「传输」**](2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)**的操作，是串行的，不能用在对**「包」整体性要求高的合成中。
 
 「包」发送物品的同时，可以封装很多信息 （例如[**「指示物」**](2.4-指示物.md)），可以用来寻址，就像计算机网络中的地址段；也可以嵌套包，在未来的实例可能会介绍。在下一节中会详细介绍[**「指示物」**](2.4-指示物.md)。
 
-同时，「包」是一种**抽象**，表示该物品序列在“完成任务过程”中不会被修改，但是「包」不一定要“包起来”。「发包」简化成[「传输」](../2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)，可以节省很多体积，在[**实例3.4**](../3-%E5%AE%9E%E4%BE%8B/3.4-%E4%BC%A0%E9%80%81%E6%9C%BA.md)的传送机设计有介绍。
+同时，「包」是一种**抽象**，表示该物品序列在“完成任务过程”中不会被修改，但是「包」不一定要“包起来”。「发包」简化成[「传输」](2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)，可以节省很多体积，在[**实例3.4**](3-%E5%AE%9E%E4%BE%8B/3.4-%E4%BC%A0%E9%80%81%E6%9C%BA.md)的传送机设计有介绍。
 
 _
 「指示物」在条件判断和条件选择中起着关键作用，“指示”功能类比于计算机语言中的"IF"
@@ -197,7 +197,7 @@ _
 
 ### 2.4.2「指示物」的实现 <a href="#_toc137910916" id="_toc137910916"></a>
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>图2.10 频道杀手</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (22).png" alt=""><figcaption><p>图2.10 频道杀手</p></figcaption></figure>
 
 左边箱子有「包」，「包」中有效物品，和「指示物」
 
@@ -226,7 +226,7 @@ _
 
 这种控制方式的经典实现就是样板带标记物的符文祭坛，[https://www.bilibili.com/video/BV1ab4y1R7t2/](https://www.bilibili.com/video/BV1ab4y1R7t2/)，卡位用的标记物等同于3、 **开始任务**的信息，祭坛完成合成后的红石信号等同于4、 **完成任务**的信息。
 
-这种处理方式的变型可以是符文祭坛的[目前最简单的标记物实现](../4-实例/4.1-植物魔法符文祭坛.md#\_toc137910926-1)，那个把3、4的实现合并成一个实现，简化了控制流程缩小了体积。
+这种处理方式的变型可以是符文祭坛的[目前最简单的标记物实现](4-实例/4.1-植物魔法符文祭坛.md#\_toc137910926-1)，那个把3、4的实现合并成一个实现，简化了控制流程缩小了体积。
 
 #### 第二种控制
 
@@ -238,13 +238,13 @@ _
 
 ##### 实现：
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>时钟控制</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption><p>时钟控制</p></figcaption></figure>
 
 在无任务时，漏斗和箱子组成的时钟被锁定。开始任务，ME接口发出一份原料，发信器发送**开始任务的信息，**解锁漏斗，循环开始，箱子右边的发信器发出信号，**锁存信息**。当时钟循环即将完成，将**锁存信息解锁，**读取**开始任务的信息。**至此完成一个循环。
 
 时钟网络中的其他发信器根据时钟中的物品数量，在不同的时间间隔后发出红石信号。
 
-在类似[倒序装填](../3-常用进阶实现/3.4-倒序装填.md)那种需要很多红石信号的控制系统中能用上。
+在类似[倒序装填](3-常用进阶实现/3.4-倒序装填.md)那种需要很多红石信号的控制系统中能用上。
 
 _
 这部分可以参照存档进行学习
@@ -267,15 +267,15 @@ _
 
 ### 3.1.2「卡合成」的实现 <a href="#_toc137910917" id="_toc137910917"></a>
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>图2.11 精致</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (17).png" alt=""><figcaption><p>图2.11 精致</p></figcaption></figure>
 
-ME接口模式应是”当容器内有物品时不传送物品“，ME接口发送合成物品（带「标记物」）到左箱子，左箱子发送有效合成物品到右箱子，「标记物」留在左箱子。当子网完成合成物品时，（任意）发出红石信号，激活左箱子下方的主网输入总线，把 「标记物」抽回主网，单次合成完成。在[实例3.2](../3-%E5%AE%9E%E4%BE%8B/3.2-%E6%A4%8D%E7%89%A9%E9%AD%94%E6%B3%95%E7%AC%A6%E6%96%87%E7%A5%AD%E5%9D%9B.md)植物魔法符文祭坛中会用到
+ME接口模式应是”当容器内有物品时不传送物品“，ME接口发送合成物品（带「标记物」）到左箱子，左箱子发送有效合成物品到右箱子，「标记物」留在左箱子。当子网完成合成物品时，（任意）发出红石信号，激活左箱子下方的主网输入总线，把 「标记物」抽回主网，单次合成完成。在[实例3.2](3-%E5%AE%9E%E4%BE%8B/3.2-%E6%A4%8D%E7%89%A9%E9%AD%94%E6%B3%95%E7%AC%A6%E6%96%87%E7%A5%AD%E5%9D%9B.md)植物魔法符文祭坛中会用到
 
-<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption><p>图2.12 红石控制</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (1).png" alt=""><figcaption><p>图2.12 红石控制</p></figcaption></figure>
 
 另一种思路（by DoremySwee），「标记物」放在另一个子网，让「标记物」在合成时进入上文中的左箱子，后文同。这种设计在设计样板时不用设置标记物，而且能单独抽象出一个「标记物」处理结构，但是相对而言体积会稍大一点。
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>图2.13 时不时可能出问题（</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (20).png" alt=""><figcaption><p>图2.13 时不时可能出问题（</p></figcaption></figure>
 
 当然也可以选择这种结构卡合成，就不需要标记物了。（如果不怕卡的话）
 
@@ -285,7 +285,7 @@ ME接口模式应是”当容器内有物品时不传送物品“，ME接口发�
 
 用发包解决
 
-<figure><img src="../.gitbook/assets/image (10) (1).png" alt=""><figcaption><p>图2.14 <a href="../3-%E5%AE%9E%E4%BE%8B/3.3-%E5%8D%95%E6%A0%B7%E6%9D%BF%E5%AF%B9%E5%A4%9A%E5%AD%90%E7%BD%91%E9%81%8D%E5%8E%86%E5%8F%91%E5%8C%85.md">3.3 单样板对多子网遍历发包</a> 的单片结构</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (10) (1).png" alt=""><figcaption><p>图2.14 <a href="3-%E5%AE%9E%E4%BE%8B/3.3-%E5%8D%95%E6%A0%B7%E6%9D%BF%E5%AF%B9%E5%A4%9A%E5%AD%90%E7%BD%91%E9%81%8D%E5%8E%86%E5%8F%91%E5%8C%85.md">3.3 单样板对多子网遍历发包</a> 的单片结构</p></figcaption></figure>
 
 
 _
@@ -304,11 +304,11 @@ _
 
 「伪合成」样板的制作：样板终端在制作时选择**处理样板模式**，第一个样板的**产物**  为第二个样板的**原料**，后同，原料——产物依次排列。
 
-其中第一个样板  放置的ME接口的模式应是”当容器内有物品时不传送物品“，其他样板放在正常ME接口中。这样能保证一次只发送一次物品，就可以用[2.4 卡合成](../2-相关的概念与实现/2.4-指示物.md#\_toc137910917)来实现「伪合成」了
+其中第一个样板  放置的ME接口的模式应是”当容器内有物品时不传送物品“，其他样板放在正常ME接口中。这样能保证一次只发送一次物品，就可以用[2.4 卡合成](2-相关的概念与实现/2.4-指示物.md#\_toc137910917)来实现「伪合成」了
 
-<figure><img src="../.gitbook/assets/image (6) (2).png" alt=""><figcaption><p>图3.1-1</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6) (2).png" alt=""><figcaption><p>图3.1-1</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (19) (1).png" alt=""><figcaption><p>图3.1 经典结构</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (19) (1).png" alt=""><figcaption><p>图3.1 经典结构</p></figcaption></figure>
 
 1、在图3.1-1鼠标指向的储存总线中   标记全部「伪合成」样板中的「产物」，优先级调高。就能实现所有进入主网络（绿）的「产物」优先进该子网。（「产物」应该选择永远不会在AE2中参与合成的物品）
 
@@ -357,7 +357,7 @@ _
 
 ### 3.3.2设计实现
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption><p>利用ME-IO的发包</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption><p>利用ME-IO的发包</p></figcaption></figure>
 
 左上角的箱子是多「点」，右下角的箱子是单「点」。
 
@@ -369,7 +369,7 @@ _
 
 除了ME-IO发包，也有基于输入总线的发包，但是纯ae实现效果不很好
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>熟悉不</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption><p>熟悉不</p></figcaption></figure>
 
 ME接口-箱子（单点），输入总线一次最多取出96个物品（4加速卡）。当上面箱子（多点）需要「包」，通过发信器就能直接从下方箱子取「包」。图示只能实现单对两，下面箱子如果换成[抽屉控制器](https://www.mcmod.cn/item/33985.html)等类似功能的方块，就能实现单对多。
 
@@ -405,9 +405,9 @@ _
 
 ### 4.1.2设计实现 <a href="#_toc137910926" id="_toc137910926"></a>
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>卡合成 实现1</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption><p>卡合成 实现1</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (8) (2).png" alt=""><figcaption><p>卡合成 实现1 续</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (2).png" alt=""><figcaption><p>卡合成 实现1 续</p></figcaption></figure>
 
 采用的是[图2.12](broken-reference)的设计思路，产物沿着ME接口-箱子-ME管道（粉）-花格箱的顺序传输发配。后面箱子中有「标记物」，当下面箱子内容物超过2个时，将「标记物」传输进下面箱子，当合成完成时，将下面箱子的「标记物」传输到后面箱子。依此完成循环。
 
@@ -421,13 +421,13 @@ _
 
 视频有含有「标记物」的实现，比卡合成实现1理论上更稳定，体积更小。
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption><p>直接发包 实现1</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (18).png" alt=""><figcaption><p>直接发包 实现1</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption><p>30分钟优化后的实现</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (16).png" alt=""><figcaption><p>30分钟优化后的实现</p></figcaption></figure>
 
 用[图2.14](broken-reference)的设计思路，打包机打包。开始合成时，ME-IO中的储存元件在靠右的ME-IO中，这个ME-IO上接的输入总线有红石卡。右边的ME接口发送物品到箱子，先有红石信号让ME-IO中的储存元件空转一圈，转完一圈后得到箱子里的一份物品，再接红石信号，此时开始正式合成。每次合成完都会给输入总线一个信号让其继续发包，如此持续到循环结束。
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>目前最简单的标记物实现</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption><p>目前最简单的标记物实现</p></figcaption></figure>
 
 ME接口阻挡模式，发原料送进箱子。1、合成开始时，红石比较器激活鼠标所指输入总线，将材料发送至祭坛；2、合成结束时，读取祭坛信号，激活一次输入总线，重新开始合成。循环流程2即可自动化。
 
@@ -460,7 +460,7 @@ _
 
 主网的A地址输出总线（主网任取一空的空间储存元件）-->A地址空间IO端口(简称A端)-->子网的A地址输入总线-->子网à子网的B地址输出总线（已经存储数据的空间储存元件）-->B端-->主网的B地址输入总线（还原成空的空间储存元件）。
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>复杂的实现</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (10).png" alt=""><figcaption><p>复杂的实现</p></figcaption></figure>
 
 图中粉红色线缆是主网，红色和绿色线缆是子网。
 
@@ -470,13 +470,13 @@ _
 
 第一代设计流程图：
 
-<figure><img src="../.gitbook/assets/image (2) (2).png" alt=""><figcaption><p>复杂</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (2).png" alt=""><figcaption><p>复杂</p></figcaption></figure>
 
 实现
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>复杂</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (7).png" alt=""><figcaption><p>复杂</p></figcaption></figure>
 
 ##### 第二代设计思路 <a href="#_toc137910937" id="_toc137910937"></a>
 
@@ -484,13 +484,13 @@ _
 
 第二代流程图：
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 实现
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
 #### 第三种实现
 
@@ -500,7 +500,7 @@ _
 
 实现：
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption><p>小巧精致（20分钟做的没优化结构）</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (15).png" alt=""><figcaption><p>小巧精致（20分钟做的没优化结构）</p></figcaption></figure>
 
 # 5 参考文献
 
