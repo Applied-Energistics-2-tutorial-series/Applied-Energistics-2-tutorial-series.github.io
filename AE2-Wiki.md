@@ -1,8 +1,9 @@
-_请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。_
+>**请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。**
 
  **前言**
 
-<figure><img src="pic/图片1.png" alt=""><figcaption><p>AE god</p></figcaption></figure>
+<figure><img src="pic/图片1.png" alt=""></figure>
+<p align="center">AE god</p>
 
  AE2 Wiki Summary
 
@@ -24,25 +25,23 @@ _请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。_
   * [4.2 传送机](4-实例/4.2-传送机.md)
 * [5 参考文献](5-参考文献.md)
 
-# 1.绪论
+# 1 绪论
 
-_
-教程会出现很多独创或借鉴术语，较难理解的术语会有相应的定义，术语用「」表示。 这样在描述实现时，就能直接用已经抽象好的术语，直接找对应模板，根据功能选择使用
-_
+>教程会出现很多独创或借鉴术语，较难理解的术语会有相应的定义，术语用「」表示。 这样在描述实现时，就能直接用已经抽象好的术语，直接找对应模板，根据功能选择使用
 
-## 1.1任务
+## 1.1 任务
 
 AE自动化的本质就是任务，只有明确了任务，才能寻找完成任务的方法。比如“分子装配室合成、 其他mod的机器输入输出、植物魔法符文祭坛、花药台合成、原版AE空间塔传送”等等。 这种**明确的、没有歧义的事件表述**，都称为 **任务**。
 
 _**任务的通常的完成手段是：以包为任务载体，将包传送到对应实现任务的网络。网络根据任务的需要，利用指示物或者任务控制系统完成任务。**_
 
-## 1.2路径
+## 1.2 路径
 
 任务能否实现，要看是否有路径， 比如发送1个铁到箱子，首先要有1个铁，有箱子，有ME网络能「传输」，那么就有路径完成这个任务。 即：1个铁——「传输」——箱子。只有有**路径**的任务才可能完成。 再比如“在一格岩浆里钓鱼”，这个例子中，我们没有路径去实现它。 有钓竿，有岩浆，但是钓竿碰到岩浆会自动收回，这条唯一的路径被中断了，这种任务是不可能完成的
 
 但是当我们探索自动化设计时，发现一条可能的路径被中断了，并不是说任务就不能实现了！ 事实上，有AE加持下，大部分能与AE交互的mod都能实现自动化。在这种语境下，可以说不存在ae实现不了的自动化！
 
-## 1.3拆解
+## 1.3 拆解
 
 在设计自动化时，有一种很重要的辅助设计的手段是**拆解**，**拆解**能把设计所需的操作和结构清晰的展现出来。
 
@@ -63,26 +62,22 @@ _
 从这一节开始介绍AE自动化的进阶理论，缺AE基础的小伙伴应补完基础再继续往下看。
 _
 
-# 2.相关的概念与结构实现
+# 2 相关的概念与结构实现
 
-在这一章中，「结构」是实现「概念」的最小单元，具体「设备」的功能被忽略了。
-
+>在这一章中，「结构」是实现「概念」的最小单元，具体「设备」的功能被忽略了。
 「结构」就是本章各节图里展示的部分，「结构」也会不严谨的称为「实现」。
-
 「概念」就是本章各小节的标题。
-
 举例来说，[图2.1 AE最简单的管道（管道4）](/AE2-Wiki.md#212%E7%AE%A1%E9%81%93%E7%9A%84%E5%AE%9E%E7%8E%B0) 中的AE网络整体「结构」，实现了[管道4](broken-reference)的「概念」。
-_
 在这个教程中，物品/数据从A点发送到B点只有两种方式：传输和发包。 传输和发包的区别和联系，在发包那一节介绍。
-_
 
-## 2.1ME管道传输
 
-### 2.1.1「传输」和「管道」的定义
+## 2.1 ME管道传输
+
+### 2.1.1 「传输」和「管道」的定义
 
 「传输」的定义：将ME网络中的「数据」（比如存储元件的东西）或「物品」（比如箱子内的东西）传送到指定「容器」或「网络」里。定义「传输」行为的载体为「ME管道」，简称「管道」。
 
-「物品」和「数据」的区别是：是否在存储元件中。**这样定义的好处是：可以方便的选择对应的ME管道，每种ME管道都有自己的**控制特性。
+「物品」和「数据」的区别是：是否在存储元件中。**这样定义的好处是：可以方便的选择对应的ME管道，每种ME管道都有自己的控制特性**。
 
 记：
 
@@ -94,84 +89,120 @@ _
 
 物品→物品为「管道」4
 
-### 2.1.2「管道」的实现
+### 2.1.2 「管道」的实现
 
-<figure><img src="pic/image (3) (1).png" alt=""><figcaption><p>图2.1 AE最简单的管道（传输4）</p></figcaption></figure>
+<figure><img src="pic/image (3) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.1.1 AE最简单的管道（传输4）</p>
+
 
 特点：无需me控制器，无需调配置（也可以折腾存储总线），需供电，体积小功能少
 
-<figure><img src="pic/image (14) (1).png" alt=""><figcaption><p>图2.2 快传（传输1）</p></figcaption></figure>
+<figure><img src="pic/image (14) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.1.2 快传（传输1）</p>
+
 
 特点：速度快，可以与元件工作台配合，传输指定物品到另一网络
 
-<figure><img src="pic/image (5) (1).png" alt=""><figcaption><p>图2.2 可以增加控制的管道（传输4）</p></figcaption></figure>
+<figure><img src="pic/image (5) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.1.3 可以增加控制的管道（传输4）</p>
+
+
 
 特点：输出总线要调成想输出的「物品」，可以加红石卡模糊卡等进行控制，需供电（注意左下角的输入总线在这个结构是没用的，因为输入总线不能读取箱子里的信息）
 
-<figure><img src="pic/image (4) (2) (1).png" alt=""><figcaption><p>图2.3 根据网络数据条件控制的管道（传输2）</p></figcaption></figure>
+<figure><img src="pic/image (4) (2) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.1.4 根据网络数据条件控制的管道（传输2）</p>
+
+
 
 需要me控制器，输出总线和前面一样可以调配置，存储总线可以直接将输入网络的「数据」变成「物品」，体积大功能多。
 
-<figure><img src="pic/image (6) (1).png" alt=""><figcaption><p>图2.4 根据子网络数据条件控制的管道（传输4）</p></figcaption></figure>
+<figure><img src="pic/image (6) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.1.5 根据子网络数据条件控制的管道（传输4）</p>
+
+
+
+
 
 在需要子网反馈控制的设计中可以使用类似这种结构，这个思路在[2.5卡合成](2-xiang-guan-de-gai-nian-yu-shi-xian/2.5-ka-he-cheng.md)和[3.3单样板对多子网遍历发包](3-%E5%AE%9E%E4%BE%8B/3.3-%E5%8D%95%E6%A0%B7%E6%9D%BF%E5%AF%B9%E5%A4%9A%E5%AD%90%E7%BD%91%E9%81%8D%E5%8E%86%E5%8F%91%E5%8C%85.md)中有用到。
 
->-
-  「子网」是一切复杂的AE操作的前提。因为不可能主网络去实现所有操作，"机器IO、增加频道、打包合成"等等操作用主网实现过于繁琐，有些也很难实现。合理运用子网可以减少很多工程量。要理解子网的本质功能就是一段程序
-  或者说是函数。主网对子网有信号、数据输入，子网有相应的输出。
-_
-
 ## 2.2 子网
+
+
+> 「子网」是一切复杂的AE操作的前提。因为不可能主网络去实现所有操作，"机器IO、增加频道、打包合成"等等操作用主网实现过于繁琐，有些也很难实现。合理运用子网可以减少很多工程量。要理解子网的本质功能就是一段程序
+  或者说是函数。主网对子网有信号、数据输入，子网有相应的输出。
+
+
 
 ### 2.2.1「子网」的定义
 
-「主网」就是主要的ME网络，包括绝大多数数据的储存，发起合成，机器的调用等等。
+「主网」就是主要的ME网络，**功能包括绝大多数数据的储存，发起合成，机器的调用等等**。
 
-「子网」就是相对于主网而言，被主网调用或者使用主网功能的，与主网有信息/数据交互的，独立于主网的网络。
+「子网」就是相对于主网而言，被主网调用或者使用主网功能的，与主网有信息/数据交互的，**独立于主网的网络**。
 
 简单来说，子网就是小孩，要听主网的话，并根据主网的话作出反应。
 
 ### 2.2.2「子网」的实现
 
-<figure><img src="pic/image (4) (1).png" alt=""><figcaption><p>图2.5 ME接口真泛用</p></figcaption></figure>
+<figure><img src="pic/image (4) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.2.1 ME接口真泛用</p>
 
-不用解释吧。看不懂就看视频，视频有讲
 
-<figure><img src="pic/image (2) (1).png" alt=""><figcaption><p>图2.6 P2P也很好用的赛</p></figcaption></figure>
+不用解释吧。
+
+<figure><img src="pic/image (2) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.2.2 P2P也很好用的赛</p>
+
+
 
 绿色子网输出物品到箱子，粉红主网抽取箱子的物品。这种借助用P2P实现的子网也很常见，能有效的节省空间。
 
-<figure><img src="pic/image (1) (1) (1).png" alt=""><figcaption><p>图2.7 不得了的秘密</p></figcaption></figure>
+<figure><img src="pic/image (1) (1) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.2.3 不得了的秘密</p>
+
+
+
 
 这个结构可以用来完成伪合成，本质是一个子网。
 
 「主网」用储存总线和ME-IO端口与子网进行交互，在实例[3.1](3-shi-li/3.1-wei-he-cheng-gao-ji-fa-bao.md) 伪合成（高级发包）中会重点介绍。这张图截取的是实例[3.4](3-shi-li/3.4-chuan-song-ji.md) 空间塔，传送机的一部分。
 
-_
-包通常在复杂项目中，起中间作用，甚至核心作用。
-_
 
 ## 2.3 包
+
+>包通常在复杂项目中，起中间作用，甚至核心作用。
+
 
 ### 2.3.1「包」的定义
 
 「包」：在指定任务中，一堆有“意义”的物品。
 
-「发包」：把「包」，在“任务要求的时间端内”发送到指定个网络/容器。
+「发包」：把「包」，在“任务要求的时间端内”发送到指定的网络/容器。
 
 ### 2.3.2「发包」的实现 <a href="#_toc137910912" id="_toc137910912"></a>
 
-<figure><img src="pic/image (13) (1).png" alt=""><figcaption><p>图2.8 自动化の开端</p></figcaption></figure>
+<figure><img src="pic/image (13) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.3.1 自动化の开端</p>
+
+
+
 
 就是简单的发布合成…可以用[**「伪合成」**](3-%E5%AE%9E%E4%BE%8B/3.1-%E4%BC%AA%E5%90%88%E6%88%90%EF%BC%88%E9%AB%98%E7%BA%A7%E5%8F%91%E5%8C%85%EF%BC%89.md)取消占用合成储存器
 
-<figure><img src="pic/image (23).png" alt=""><figcaption><p>图2.9 多用小能手（</p></figcaption></figure>
+<figure><img src="pic/image (23).png" alt=""><figcaption><p>（</p></figcaption></figure>
+<p align="center">图2.3.2 多用小能手</p>
+
+
+
+
+
 
 激活拉杆，左边箱子物品通过ME-IO端口中转，进入右边箱子。
 
-这个结构和图2.8的不同的是不用发布合成就能发包，极限理论传输很快（40960物品/s），而且可以通过设置IO端口内存储元件设置传输的数量。
+这个结构和图2.3.1的不同的是不用发布合成就能发包，极限理论传输很快（40960物品/s），而且可以通过设置IO端口内存储元件设置传输的数量。
 
-<figure><img src="pic/image.png" alt=""><figcaption><p>传输变发包（</p></figcaption></figure>
+<figure><img src="pic/image.png" alt=""><figcaption><p>（</p></figcaption></figure>
+<p align="center">图2.3.3 传输变发包</p>
 
 ME接口发送到箱子，输入总线一次最多取出96个物品（包）（4加速卡）。当上面箱子需要「包」，通过发信器从下方箱子取「包」。
 
@@ -185,11 +216,13 @@ ME接口发送到箱子，输入总线一次最多取出96个物品（包）（4
 
 同时，「包」是一种**抽象**，表示该物品序列在“完成任务过程”中不会被修改，但是「包」不一定要“包起来”。「发包」简化成[「传输」](2-%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0/2.1-%E7%89%A9%E5%93%81%EF%BC%88%E6%95%B0%E6%8D%AE%EF%BC%89%E4%BC%A0%E8%BE%93.md)，可以节省很多体积，在[**实例3.4**](3-%E5%AE%9E%E4%BE%8B/3.4-%E4%BC%A0%E9%80%81%E6%9C%BA.md)的传送机设计有介绍。
 
-_
-「指示物」在条件判断和条件选择中起着关键作用，“指示”功能类比于计算机语言中的"IF"
-_
+
 
 ## 2.4 指示物
+>「指示物」在条件判断和条件选择中起着关键作用，“指示”功能类比于计算机语言中的"IF"
+
+
+
 
 ### 2.4.1「指示物」的定义 <a href="#_toc137910915" id="_toc137910915"></a>
 
@@ -197,8 +230,8 @@ _
 
 ### 2.4.2「指示物」的实现 <a href="#_toc137910916" id="_toc137910916"></a>
 
-<figure><img src="pic/image (22).png" alt=""><figcaption><p>图2.10 频道杀手</p></figcaption></figure>
-
+<figure><img src="pic/image (22).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.4.1 频道杀手</p>
 左边箱子有「包」，「包」中有效物品，和「指示物」
 
 发信器监测「指示物」，发出红石信号（条件判断），右边的输出总线接收信号输出，从而完成选址。
@@ -238,7 +271,9 @@ _
 
 ##### 实现：
 
-<figure><img src="pic/image (1).png" alt=""><figcaption><p>时钟控制</p></figcaption></figure>
+<figure><img src="pic/image (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图2.5.1 时钟控制</p>
+
 
 在无任务时，漏斗和箱子组成的时钟被锁定。开始任务，ME接口发出一份原料，发信器发送**开始任务的信息，**解锁漏斗，循环开始，箱子右边的发信器发出信号，**锁存信息**。当时钟循环即将完成，将**锁存信息解锁，**读取**开始任务的信息。**至此完成一个循环。
 
@@ -267,15 +302,20 @@ _
 
 ### 3.1.2「卡合成」的实现 <a href="#_toc137910917" id="_toc137910917"></a>
 
-<figure><img src="pic/image (17).png" alt=""><figcaption><p>图2.11 精致</p></figcaption></figure>
+<figure><img src="pic/image (17).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图3.1.1 精致</p>
+
 
 ME接口模式应是”当容器内有物品时不传送物品“，ME接口发送合成物品（带「标记物」）到左箱子，左箱子发送有效合成物品到右箱子，「标记物」留在左箱子。当子网完成合成物品时，（任意）发出红石信号，激活左箱子下方的主网输入总线，把 「标记物」抽回主网，单次合成完成。在[实例3.2](3-%E5%AE%9E%E4%BE%8B/3.2-%E6%A4%8D%E7%89%A9%E9%AD%94%E6%B3%95%E7%AC%A6%E6%96%87%E7%A5%AD%E5%9D%9B.md)植物魔法符文祭坛中会用到
 
-<figure><img src="pic/image (8) (1).png" alt=""><figcaption><p>图2.12 红石控制</p></figcaption></figure>
+<figure><img src="pic/image (8) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图3.1.2 红石控制</p>
 
 另一种思路（by DoremySwee），「标记物」放在另一个子网，让「标记物」在合成时进入上文中的左箱子，后文同。这种设计在设计样板时不用设置标记物，而且能单独抽象出一个「标记物」处理结构，但是相对而言体积会稍大一点。
 
-<figure><img src="pic/image (20).png" alt=""><figcaption><p>图2.13 时不时可能出问题（</p></figcaption></figure>
+<figure><img src="pic/image (20).png" alt=""><figcaption><p>（</p></figcaption></figure>
+<p align="center">图3.1.3 时不时可能出问题</p>
+
 
 当然也可以选择这种结构卡合成，就不需要标记物了。（如果不怕卡的话）
 
@@ -285,7 +325,10 @@ ME接口模式应是”当容器内有物品时不传送物品“，ME接口发�
 
 用发包解决
 
-<figure><img src="pic/image (10) (1).png" alt=""><figcaption><p>图2.14 <a href="3-%E5%AE%9E%E4%BE%8B/3.3-%E5%8D%95%E6%A0%B7%E6%9D%BF%E5%AF%B9%E5%A4%9A%E5%AD%90%E7%BD%91%E9%81%8D%E5%8E%86%E5%8F%91%E5%8C%85.md">3.3 单样板对多子网遍历发包</a> 的单片结构</p></figcaption></figure>
+<figure><img src="pic/image (10) (1).png" alt=""></figure>
+<p align="center">图3.1.4 [单点对多点发包](W)单片结构 </p>
+
+
 
 
 _
@@ -306,9 +349,10 @@ _
 
 其中第一个样板  放置的ME接口的模式应是”当容器内有物品时不传送物品“，其他样板放在正常ME接口中。这样能保证一次只发送一次物品，就可以用[2.4 卡合成](2-相关的概念与实现/2.4-指示物.md#\_toc137910917)来实现「伪合成」了
 
-<figure><img src="pic/image (6) (2).png" alt=""><figcaption><p>图3.1-1</p></figcaption></figure>
+<figure><img src="pic/image (6) (2).png" alt=""></figure>
 
-<figure><img src="pic/image (19) (1).png" alt=""><figcaption><p>图3.1 经典结构</p></figcaption></figure>
+<figure><img src="pic/image (19) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+<p align="center">图3.2.1 经典结构</p>
 
 1、在图3.1-1鼠标指向的储存总线中   标记全部「伪合成」样板中的「产物」，优先级调高。就能实现所有进入主网络（绿）的「产物」优先进该子网。（「产物」应该选择永远不会在AE2中参与合成的物品）
 
