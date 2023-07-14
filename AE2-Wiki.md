@@ -426,6 +426,11 @@ ME接口-箱子（单点），输入总线一次最多取出96个物品（4加�
 
 ### 3.4.2 设计实现
 
+首先设计路线，依旧是ME接口发物品，但是为了在原料有重复的情况下，使物品不发生堆叠，必须选用只能**存放一个物品**的容器做为中继。
+ME接口先发送第一个物品，这个物品被发送到装填了占位符的箱子里
+![](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/assets/113762899/11bea9be-a88a-433a-a15b-a2bf72fb89fe)
+
+
 
 
 # 4 实例
