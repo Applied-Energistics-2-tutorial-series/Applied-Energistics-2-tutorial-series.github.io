@@ -294,31 +294,35 @@ ME接口发送到箱子，输入总线一次最多取出96个物品（包）（4
 ### 3.1.2「卡合成」的实现
 
 合成通常来说都是通过ME接口发起的，ME接口有”当容器内有物品时不传送物品“模式，能根据要发送的子网的物品存储状态选择是否发送物品。这就是实现卡合成的基础。
-针对ME接口的这个性质，有两个大思路：1、样板中放「指示物」或者说「占位符」，当ME接口用样板发送物品时，将样板内的占位符留在容器中，其他原料拿去处理，处理完成后将占位符取出开始下一次合成。2、样板中不放占位符，当ME接口发送一份物品过来的时候，用子网 向箱子里放占位符，同样的其他原料拿去处理，处理完成后将占位符取出开始下一次合成。
+
+针对ME接口的这个性质，有两个大思路：1、样板中放「指示物」或者说「占位符」，当ME接口用样板发送物品时，将样板内的占位符留在容器中，其他原料拿去处理，处理完成后将占位符取出开始下一次合成。2、样板中不放占位符，当ME接口发送一份物品过来的时候，用子网 向箱子里放占位符，同样的其他原料拿去处理，处理完成后将占位符取出放回子网开始下一次合成。
+
 很显然第二个思路在实际中更好用，在做样板时不用考虑标记。但是相对而言这样的处理体积会更大，因为多了一个子网的操作。
 
 <figure><img src="pic/image (17).png" alt=""><figcaption><p></p></figcaption></figure>
 <p align="center">图3.1.1 精致</p>
 
 
-ME接口模式应是”当容器内有物品时不传送物品“，ME接口发送合成物品（带「标记物」）到左箱子，左箱子发送有效合成物品到右箱子，「标记物」留在左箱子。当子网完成合成物品时，（任意）发出红石信号，激活左箱子下方的主网输入总线，把 「标记物」抽回主网，单次合成完成。在植物魔法符文祭坛中会用到
+用的是第一种思路，ME接口发送合成物品（带「标记物」）到左箱子，左箱子发送有效合成物品到右箱子，「标记物」留在左箱子。当子网完成合成物品时，（任意）发出红石信号，激活左箱子下方的主网输入总线，把 「标记物」抽回主网，单次合成完成。
 
-<figure><img src="pic/image (8) (1).png" alt=""><figcaption><p></p></figcaption></figure>
+![](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/assets/113762899/8915a21c-d9eb-45ba-a760-113ff6dfdd10)
 <p align="center">图3.1.2 红石控制</p>
 
-另一种思路（by DoremySwee），「标记物」放在另一个子网，让「标记物」在合成时进入上文中的左箱子，后文同。这种设计在设计样板时不用设置标记物，而且能单独抽象出一个「标记物」处理结构，但是相对而言体积会稍大一点。
+第二种思路，需要说明的是这种实现并不稳定，因为红石卡有自身性质（无厘头）的延时。
 
-<figure><img src="pic/image (20).png" alt=""width="1000px"><figcaption><p></p></figcaption></figure>
-<p align="center">图3.1.3 时不时可能出问题</p>
+![](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/assets/113762899/98a02b82-9e85-4287-b791-431ea5acd4f3)
+![](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/assets/113762899/0083ab5d-2d03-4eee-aa77-02e6df5732c2)
+<p align="center">图3.1.3 样板无标记实现1</p>
+
+上一个设计的改进版，ME接口发物品到箱子后，用发信器激活活塞，活塞将占位符推上，被破坏面板捕获进入箱子。当合成完成时，用红石信号控制，把占位符用成型面板重新放回活塞上。
+
+![](https://github.com/Applied-Energistics-2-tutorial-series/Applied-Energistics-2-tutorial-series.github.io/assets/113762899/44b2e4cf-dc2e-457d-9107-289bd1e80927)
+<p align="center">图3.1.4 目前发现最简单的结构</p>
+
+更加精简版的设计，bug也更少，循环超过10gt就能正常运转。
 
 
-当然也可以选择这种结构卡合成，就不需要标记物了。（如果不怕卡的话）
-
-原版加AE实现起来麻烦，最好用有范围吸收的mod实现。
-
-#### 或者直接一步到位：
-
-用发包解决
+如果要发送的物品过多也可以考虑用ME-IO的发包功能，详见3.3 单点对多点发包
 
 <figure><img src="pic/image (10) (1).png" alt=""></figure>
 
