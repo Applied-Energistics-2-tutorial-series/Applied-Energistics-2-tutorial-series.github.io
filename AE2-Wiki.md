@@ -1,5 +1,5 @@
  # **前言**
-
+<!-- 哈哈我是多段 注释， 不会在浏览器中显示。 -->
 >**请确保在能看懂AE2 Basic Wiki的前提下，再看AE2 Wiki。**
 
 <figure><img src="pic/图片1.png" alt=""width="2000px"></figure>
